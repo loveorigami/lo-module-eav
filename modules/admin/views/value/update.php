@@ -6,12 +6,12 @@ use yii\helpers\Html;
 
 $this->title = Yii::t('backend', 'Update {modelClass}: ', [
     'modelClass' => 'Entity',
-]) . ' ' . $model->entityName;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Entity'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->entityName, 'url' => ['view', 'id' => $model->id]];
+]) . ' ' . $model->entityId;
+$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Value'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->entityId, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::t('backend', 'Update');
 ?>
-<div class="entity-update">
+<div class="value-update">
 
     <?php echo $this->render('_form', [
         'model' => $model,

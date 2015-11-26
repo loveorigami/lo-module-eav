@@ -14,6 +14,10 @@ return [
                     'label' => 'Attribute',
                     'url' => ['/eav/attribute/index'],
                 ],
+                [
+                    'label' => 'Value',
+                    'url' => ['/eav/value/index'],
+                ],
             ]
         ],
     ],

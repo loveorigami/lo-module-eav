@@ -50,6 +50,17 @@ class EavAttributeMeta extends MetaFields
                 ],
                 "params" => [$this->owner, "entityId", "entity"] // id и relation getEntity
             ],
+            "order" => [
+                "definition" => [
+                    "class" => \lo\core\db\fields\TextField::className(),
+                    "title" => Yii::t('backend', 'Order'),
+                    "showInGrid" => true,
+                    "showInFilter" => true,
+                    "isRequired" => true,
+                    "editInGrid" => true,
+                ],
+                "params" => [$this->owner, "order"]
+            ],
         ];
     }
 }

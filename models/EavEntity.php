@@ -15,6 +15,7 @@ use Yii;
  */
 class EavEntity extends \lo\core\db\ActiveRecord
 {
+    public $tplDir = '@lo/modules/eav/modules/admin/views/entity/tpl/';
     /**
      * @inheritdoc
      */

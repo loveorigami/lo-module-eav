@@ -17,43 +17,23 @@ use Yii;
  * @property Eav $entity
  * @property EavAttributeOption $option
  */
-class EavAttributeValue extends \yii\db\ActiveRecord
+class EavAttributeValue extends \lo\core\db\ActiveRecord
 {
+    public $tplDir = '@lo/modules/eav/modules/admin/views/value/tpl/';
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return '{{%eav_attribute_value}}';
+        return '{{%eav__attribute_value}}';
     }
 
     /**
      * @inheritdoc
      */
-    public function rules()
+    public function metaClass()
     {
-        return [
-            [['entityId', 'attributeId'], 'required'],
-            [['entityId', 'attributeId', 'optionId'], 'integer'],
-            [['value'], 'string', 'max' => 255],
-            //[['attributeId'], 'exist', 'skipOnError' => true, 'targetClass' => EavAttribute::className(), 'targetAttribute' => ['attributeId' => 'id']],
-            //[['entityId'], 'exist', 'skipOnError' => true, 'targetClass' => Eav::className(), 'targetAttribute' => ['entityId' => 'id']],
-            //[['optionId'], 'exist', 'skipOnError' => true, 'targetClass' => EavAttributeOption::className(), 'targetAttribute' => ['optionId' => 'id']],
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'entityId' => 'Entity ID',
-            'attributeId' => 'Attribute ID',
-            'value' => 'Value',
-            'optionId' => 'Option ID',
-        ];
+        return EavAttributeValueMeta::className();
     }
 
     /**

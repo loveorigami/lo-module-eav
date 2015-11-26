@@ -14,38 +14,22 @@ use Yii;
  *
  * @property EavAttribute[] $eavAttributes
  */
-class EavAttributeType extends \yii\db\ActiveRecord
+class EavAttributeType extends \lo\core\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return '{{%eav_attribute_type}}';
+        return '{{%eav__attribute_type}}';
     }
 
     /**
      * @inheritdoc
      */
-    public function rules()
+    public function metaClass()
     {
-        return [
-            [['storeType'], 'integer'],
-            [['name', 'handlerClass'], 'string', 'max' => 255],
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'name' => 'Name',
-            'handlerClass' => 'Handler Class',
-            'storeType' => 'Store Type',
-        ];
+        return EavAttributeMeta::className();
     }
 
     /**

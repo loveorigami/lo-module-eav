@@ -16,39 +16,22 @@ use Yii;
  * @property EavAttribute $attribute
  * @property EavAttributeValue[] $eavAttributeValues
  */
-class EavAttributeOption extends \yii\db\ActiveRecord
+class EavAttributeOption extends \lo\core\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return '{{%eav_attribute_option}}';
+        return '{{%eav__attribute_option}}';
     }
 
     /**
      * @inheritdoc
      */
-    public function rules()
+    public function metaClass()
     {
-        return [
-            [['attributeId', 'defaultOptionId'], 'integer'],
-            [['value'], 'string', 'max' => 255],
-            //[['attributeId'], 'exist', 'skipOnError' => true, 'targetClass' => EavAttribute::className(), 'targetAttribute' => ['attributeId' => 'id']],
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'attributeId' => 'Attribute ID',
-            'value' => 'Value',
-            'defaultOptionId' => 'Default option Id',
-        ];
+        return EavAttributeMeta::className();
     }
 
     /**
