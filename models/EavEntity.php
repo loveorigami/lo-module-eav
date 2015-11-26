@@ -13,40 +13,22 @@ use Yii;
  *
  * @property EavAttribute[] $eavAttributes
  */
-class EavEntity extends \yii\db\ActiveRecord
+class EavEntity extends \lo\core\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return '{{%eav_entity}}';
+        return '{{%eav__entity}}';
     }
-
     /**
      * @inheritdoc
      */
-    public function rules()
+    public function metaClass()
     {
-        return [
-            [['entityModel', 'entityName'], 'string', 'max' => 100],
-            [['categoryId'], 'integer'],
-        ];
+        return EavEntityMeta::className();
     }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'entityName' => 'Name',
-            'entityModel' => 'Entity Model',
-            'categoryId' => 'ID Category',
-        ];
-    }
-
     /**
      * @return \yii\db\ActiveQuery
      */

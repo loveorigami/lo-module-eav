@@ -4,10 +4,14 @@ return [
     'modules' => [
         'eav' => [
             'class' => 'lo\modules\eav\modules\admin\Module',
-            'defaultRoute' => 'attribute',
+            'defaultRoute' => 'entity',
 			'menuItems' => [
                 [
-                    'label' => Yii::t('common', 'Attributes'),
+                    'label' => 'Entity',
+                    'url' => ['/eav/entity/index'],
+                ],
+                [
+                    'label' => 'Attribute',
                     'url' => ['/eav/attribute/index'],
                 ],
             ]
