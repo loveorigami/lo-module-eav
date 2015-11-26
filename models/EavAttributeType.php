@@ -1,8 +1,7 @@
 <?php
 
-namespace mirocow\eav\models;
+namespace lo\modules\eav\models;
 
-use mirocow\eav\models\EavAttribute;
 use Yii;
 
 /**

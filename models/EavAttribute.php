@@ -31,9 +31,9 @@ class EavAttribute extends \lo\core\db\ActiveRecord
      */
     public static function tableName()
     {
-        return '{{%eav_attribute}}';
+        return '{{%pg__form}}';
     }
-	
+
     /**
      * @inheritdoc
      */
@@ -41,56 +41,4 @@ class EavAttribute extends \lo\core\db\ActiveRecord
     {
         return EavAttribute::className();
     }
-	
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getDefaultOption()
-    {
-        return $this->hasOne(EavAttributeOption::className(), ['id' => 'defaultOptionId']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getEavType()
-    {
-        return $this->hasOne(EavAttributeType::className(), ['id' => 'typeId']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getEntity()
-    {
-        return $this->hasOne(EavEntity::className(), ['id' => 'entityId']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getEavOptions()
-    {
-        return $this->hasMany(EavAttributeOption::className(), ['attributeId' => 'id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getEavAttributeValues()
-    {
-        return $this->hasMany(EavAttributeValue::className(), ['attributeId' => 'id']);
-    }
-    
-    public function getbootstrapData()
-    {
-      return [
-        'cid' => '',
-        'label' => '',
-        'field_type' => '',
-        'required' => '',
-        'field_options' => [],      
-      ];
-    }
-        
 }
