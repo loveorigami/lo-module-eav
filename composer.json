@@ -1,0 +1,33 @@
+{
+    "name": "loveorigami/lo-module-eav",
+    "description": "Eav module for Lo-CMS",
+    "version": "1.0",
+    "type": "yii2-extension",
+    "keywords": [
+        "yii2",
+        "eav",
+        "module"
+    ],
+    "homepage": "https://bitbucket.org/loveorigami/lo-module-eav",
+    "time": "2015-06-27",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andrey Lukyanov",
+            "email": "loveorigami@mail.ru",
+            "homepage": "http://loveorigami.info",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "source": "https://bitbucket.org/loveorigami/lo-module-eav"
+    },
+    "require": {
+        "yiisoft/yii2": "~2"
+    },
+    "autoload": {
+        "psr-4": {
+            "lo\\modules\\eav\\": ""
+        }
+    }
+}
