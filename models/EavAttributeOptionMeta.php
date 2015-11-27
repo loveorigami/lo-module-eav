@@ -12,7 +12,15 @@ use yii\helpers\ArrayHelper;
  */
 class EavAttributeOptionMeta extends MetaFields
 {
-
+    /**
+     * Возвращает массив для привязки
+     * @return array
+     */
+    public function getAtributes()
+    {
+        $models = EavAttribute::find()->published()->orderBy(["name"=>SORT_ASC])->all();
+        return ArrayHelper::map($models, "id", "name");
+    }
     /**
      * @inheritdoc
      */
@@ -21,14 +29,12 @@ class EavAttributeOptionMeta extends MetaFields
         return [
             "attributeId" => [
                 "definition" => [
-                    "class" => \lo\core\db\fields\TextField::className(),
+                    "class" => \lo\core\db\fields\HasOneField::className(),
                     "title" => Yii::t('backend', 'Attribute'),
-                    "showInGrid" => true,
-                    "showInFilter" => true,
-                    "isRequired" => true,
-                    "editInGrid" => true,
+                    "data" => [$this, "getAtributes"], // массив всех типов (см. выше)
+                    "editInGrid" => false,
                 ],
-                "params" => [$this->owner, "attributeId"]
+                "params" => [$this->owner, "attributeId", "attribute"] // id и relation getEavType
             ],
             "value" => [
                 "definition" => [
@@ -40,17 +46,6 @@ class EavAttributeOptionMeta extends MetaFields
                     "editInGrid" => true,
                 ],
                 "params" => [$this->owner, "value"]
-            ],
-            "defaultOptionId" => [
-                "definition" => [
-                    "class" => \lo\core\db\fields\TextField::className(),
-                    "title" => Yii::t('backend', 'DefaultOption'),
-                    "showInGrid" => true,
-                    "showInFilter" => true,
-                    "isRequired" => true,
-                    "editInGrid" => true,
-                ],
-                "params" => [$this->owner, "defaultOptionId"]
             ],
         ];
     }

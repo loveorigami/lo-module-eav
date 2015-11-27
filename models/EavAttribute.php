@@ -20,12 +20,13 @@ use Yii;
  * @property string $description 
  *
  * @property EavAttributeOption $defaultOption
- * @property EavAttributeType $type
  * @property EavAttributeOption[] $eavAttributeOptions
  * @property EavAttributeValue[] $eavAttributeValues
  */
 class EavAttribute extends \lo\core\db\ActiveRecord
 {
+    public $tplDir = '@lo/modules/eav/modules/admin/views/attribute/tpl/';
+
     /**
      * @inheritdoc
      */

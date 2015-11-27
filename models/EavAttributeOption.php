@@ -18,6 +18,7 @@ use Yii;
  */
 class EavAttributeOption extends \lo\core\db\ActiveRecord
 {
+    public $tplDir = '@lo/modules/eav/modules/admin/views/option/tpl/';
     /**
      * @inheritdoc
      */
