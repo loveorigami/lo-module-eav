@@ -7,7 +7,7 @@ namespace lo\modules\eav\handlers;
 
 /**
  * Class RawValueHandler
- * @package mirocow\eav
+ * @package lo\modules\eav
  */
 class ArrayValueHandler extends RawValueHandler
 {

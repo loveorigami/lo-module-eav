@@ -13,7 +13,7 @@ use yii\db\ActiveRecord;
 
 /**
  * Class EavBehavior
- * @package mirocow\eav
+ * @package lo\modules\eav
  *
  * @mixin ActiveRecord
  * @property EavModel $eav;

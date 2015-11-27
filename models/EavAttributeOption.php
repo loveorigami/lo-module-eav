@@ -31,7 +31,7 @@ class EavAttributeOption extends \lo\core\db\ActiveRecord
      */
     public function metaClass()
     {
-        return EavAttributeMeta::className();
+        return EavAttributeOptionMeta::className();
     }
 
     /**

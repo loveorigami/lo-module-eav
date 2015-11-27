@@ -9,7 +9,7 @@ use yii\db\ActiveRecord;
 
 /**
  * Class MultipleOptionsValueHandler
- * @package mirocow\eav
+ * @package lo\modules\eav
  */
 class MultipleOptionsValueHandler extends ValueHandler
 {

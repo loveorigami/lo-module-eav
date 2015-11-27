@@ -14,52 +14,43 @@ class EavAttributeOptionMeta extends MetaFields
 {
 
     /**
-     * Возвращает массив для привязки к городам
-     * @return array
-     */
-    public function getEntities()
-    {
-        $models = EavEntity::find()->published()->orderBy(["entityName"=>SORT_ASC])->all();
-        return ArrayHelper::map($models, "id", "entityName");
-    }
-
-    /**
      * @inheritdoc
      */
     protected function config()
     {
         return [
-            "name" => [
+            "attributeId" => [
                 "definition" => [
                     "class" => \lo\core\db\fields\TextField::className(),
-                    "title" => Yii::t('backend', 'Name'),
+                    "title" => Yii::t('backend', 'Attribute'),
                     "showInGrid" => true,
                     "showInFilter" => true,
                     "isRequired" => true,
                     "editInGrid" => true,
                 ],
-                "params" => [$this->owner, "name"]
+                "params" => [$this->owner, "attributeId"]
             ],
-            "entityId" => [
-                "definition" => [
-                    "class" => \lo\core\db\fields\HasOneField::className(),
-                    "title" => Yii::t('backend', 'Entity'),
-                    "data" => [$this, "getEntities"], // массив всех типов (см. выше)
-                    "eagerLoading" => true,
-                    "gridAttr" => 'entityName'
-                ],
-                "params" => [$this->owner, "entityId", "entity"] // id и relation getEntity
-            ],
-            "order" => [
+            "value" => [
                 "definition" => [
                     "class" => \lo\core\db\fields\TextField::className(),
-                    "title" => Yii::t('backend', 'Order'),
+                    "title" => Yii::t('backend', 'Value'),
                     "showInGrid" => true,
                     "showInFilter" => true,
                     "isRequired" => true,
                     "editInGrid" => true,
                 ],
-                "params" => [$this->owner, "order"]
+                "params" => [$this->owner, "value"]
+            ],
+            "defaultOptionId" => [
+                "definition" => [
+                    "class" => \lo\core\db\fields\TextField::className(),
+                    "title" => Yii::t('backend', 'DefaultOption'),
+                    "showInGrid" => true,
+                    "showInFilter" => true,
+                    "isRequired" => true,
+                    "editInGrid" => true,
+                ],
+                "params" => [$this->owner, "defaultOptionId"]
             ],
         ];
     }

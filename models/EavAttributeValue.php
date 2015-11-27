@@ -19,7 +19,6 @@ use Yii;
  */
 class EavAttributeValue extends \lo\core\db\ActiveRecord
 {
-    public $tplDir = '@lo/modules/eav/modules/admin/views/value/tpl/';
     /**
      * @inheritdoc
      */
@@ -37,6 +36,21 @@ class EavAttributeValue extends \lo\core\db\ActiveRecord
     }
 
     /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            //[['entityId', 'attributeId'], 'required'],
+            [['entityId', 'attributeId', 'optionId'], 'integer'],
+            [['value'], 'string', 'max' => 255],
+            //[['attributeId'], 'exist', 'skipOnError' => true, 'targetClass' => EavAttribute::className(), 'targetAttribute' => ['attributeId' => 'id']],
+            //[['entityId'], 'exist', 'skipOnError' => true, 'targetClass' => Eav::className(), 'targetAttribute' => ['entityId' => 'id']],
+            //[['optionId'], 'exist', 'skipOnError' => true, 'targetClass' => EavAttributeOption::className(), 'targetAttribute' => ['optionId' => 'id']],
+        ];
+    }
+
+    /**
      * @return \yii\db\ActiveQuery
      */
     public function getEavAttribute()
@@ -49,7 +63,7 @@ class EavAttributeValue extends \lo\core\db\ActiveRecord
      */
     public function getEntity()
     {
-        return $this->hasOne(EavEntity::className(), ['id' => 'entityId']);
+        return $this->hasOne(Eav::className(), ['id' => 'entityId']);
     }
 
     /**

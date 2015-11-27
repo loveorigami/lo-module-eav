@@ -11,8 +11,8 @@ class m151024_093961_cols_val extends Migration
         $this->addColumn($this->tableName, "status", 'tinyint(1) NOT NULL DEFAULT 1');
         $this->addColumn($this->tableName, "author_id", $this->integer()->notNull()->defaultValue(1));
         $this->addColumn($this->tableName, "updater_id", $this->integer()->notNull()->defaultValue(1));
-        $this->addColumn($this->tableName, "created_at", $this->integer()->notNull());
-        $this->addColumn($this->tableName, "updated_at", $this->integer()->notNull());
+        $this->addColumn($this->tableName, "created_at", $this->integer()->notNull()->defaultValue(1448103536));
+        $this->addColumn($this->tableName, "updated_at", $this->integer()->notNull()->defaultValue(1448103536));
     }
 
     public function down()
