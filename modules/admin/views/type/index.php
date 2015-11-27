@@ -4,12 +4,13 @@ use lo\core\widgets\admin\Grid;
 use lo\core\widgets\admin\CrudLinks;
 use lo\core\widgets\admin\TabMenu;
 
-$this->title = Yii::t('backend', 'Value');
+$this->title = Yii::t('backend', 'Type');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<div class="value-index">
+<div class="type-index">
     <?=TabMenu::widget()?>
+    <?=CrudLinks::widget(["action"=>CrudLinks::CRUD_LIST, "model"=>$searchModel])?>
     <?= $this->render('_filter', ['model' => $searchModel]); ?>
 
     <?php

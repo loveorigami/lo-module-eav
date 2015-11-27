@@ -6,7 +6,7 @@
  * Time: 0:07
  */
 
-namespace mirocow\eav;
+namespace lo\modules\eav;
 
 use yii\helpers\ArrayHelper;
 

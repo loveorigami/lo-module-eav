@@ -3,10 +3,10 @@
  * @author Alexey Samoylov <alexey.samoylov@gmail.com>
  */
 
-namespace mirocow\eav;
+namespace lo\modules\eav;
 
-use mirocow\eav\EavModel;
-use mirocow\eav\models\EavAttribute;
+use lo\modules\eav\EavModel;
+use lo\modules\eav\models\EavAttribute;
 use yii\base\Behavior;
 use yii\base\InvalidConfigException;
 use yii\db\ActiveRecord;

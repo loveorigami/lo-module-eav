@@ -16,6 +16,7 @@ use Yii;
  */
 class EavAttributeType extends \lo\core\db\ActiveRecord
 {
+    public $tplDir = '@lo/modules/eav/modules/admin/views/type/tpl/';
     /**
      * @inheritdoc
      */
@@ -29,7 +30,7 @@ class EavAttributeType extends \lo\core\db\ActiveRecord
      */
     public function metaClass()
     {
-        return EavAttributeMeta::className();
+        return EavAttributeTypeMeta::className();
     }
 
     /**

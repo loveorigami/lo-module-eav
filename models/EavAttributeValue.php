@@ -49,7 +49,7 @@ class EavAttributeValue extends \lo\core\db\ActiveRecord
      */
     public function getEntity()
     {
-        return $this->hasOne(Eav::className(), ['id' => 'entityId']);
+        return $this->hasOne(EavEntity::className(), ['id' => 'entityId']);
     }
 
     /**

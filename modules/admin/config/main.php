@@ -11,6 +11,10 @@ return [
                     'url' => ['/eav/entity/index'],
                 ],
                 [
+                    'label' => 'Type',
+                    'url' => ['/eav/type/index'],
+                ],
+                [
                     'label' => 'Attribute',
                     'url' => ['/eav/attribute/index'],
                 ],

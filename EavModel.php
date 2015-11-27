@@ -3,11 +3,11 @@
  * @author Alexey Samoylov <alexey.samoylov@gmail.com>
  */
 
-namespace mirocow\eav;
+namespace lo\modules\eav;
 
-use mirocow\eav\handlers\AttributeHandler;
-use mirocow\eav\handlers\ArrayValueHandler;
-use mirocow\eav\handlers\ValueHandler;
+use lo\modules\eav\handlers\AttributeHandler;
+use lo\modules\eav\handlers\ArrayValueHandler;
+use lo\modules\eav\handlers\ValueHandler;
 
 use Yii;
 use yii\base\DynamicModel as BaseEavModel;

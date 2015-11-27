@@ -3,14 +3,14 @@
 namespace lo\modules\eav\modules\admin\controllers;
 
 use Yii;
-use lo\modules\eav\models\EavAttributeValue;
+use lo\modules\eav\models\EavAttributeType;
 use yii\web\Controller;
 use lo\core\actions\crud;
 
 /**
  * PageController implements the CRUD actions for Author model.
  */
-class ValueController extends Controller
+class TypeController extends Controller
 {
     /**
      * Действия
@@ -19,7 +19,7 @@ class ValueController extends Controller
 
     public function actions()
     {
-        $class = EavAttributeValue::className();
+        $class = EavAttributeType::className();
         return [
             'index'=>[
                 'class'=> crud\Index::className(),
@@ -27,6 +27,10 @@ class ValueController extends Controller
             ],
             'view'=>[
                 'class'=> crud\View::className(),
+                'modelClass'=>$class,
+            ],
+            'create'=>[
+                'class'=> crud\Create::className(),
                 'modelClass'=>$class,
             ],
             'update'=>[
@@ -41,6 +45,7 @@ class ValueController extends Controller
                 'class'=>crud\GroupDelete::className(),
                 'modelClass'=>$class,
             ],
+
             'editable'=>[
                 'class'=>crud\XEditable::className(),
                 'modelClass'=>$class,
