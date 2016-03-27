@@ -6,7 +6,7 @@
   "repositories": [
     {
       "type": "vcs",
-      "url": "http://loveorigami@bitbucket.org/loveorigami/lo-module-eav.git"
+      "url": "http://github.com/loveorigami/lo-module-eav.git"
     }
   ],
   "minimum-stability": "dev",
@@ -70,7 +70,7 @@ public function behaviors()
 {
   return [
     'eav' => [
-      'class' => \yeesoft\eav\EavBehavior::className(),
+      'class' => \lo\modules\eav\EavBehavior::className(),
     ]
   ];
 }
@@ -83,7 +83,7 @@ $model = new SomeModel(['category_id' => 7]);
 
 - Add EavQueryTrait to ModelQuery class:
 ```php
-use yeesoft\eav\EavQueryTrait;
+use \lo\modules\eav\EavQueryTrait;
 ```
 
 - Add filters to ModelSearch class:
