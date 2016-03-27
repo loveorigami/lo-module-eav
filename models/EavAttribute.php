@@ -77,7 +77,7 @@ class EavAttribute extends \lo\core\db\ActiveRecord
     public function getEntity()
     {
         return $this->hasMany(EavEntity::className(), ['id' => 'entity_id'])
-            ->viaTable(EavEntityAttribute::className(), ['attribute_id' => 'id']);
+            ->viaTable(EavEntityAttribute::tableName(), ['attribute_id' => 'id']);
     }
 
     /**

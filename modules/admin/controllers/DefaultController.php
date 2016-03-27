@@ -5,6 +5,7 @@ namespace lo\modules\eav\modules\admin\controllers;
 use lo\modules\eav\models\EavAttribute;
 use lo\modules\eav\models\EavCategories;
 use lo\modules\eav\models\EavEntity;
+use lo\modules\eav\models\EavEntityAttribute;
 use lo\modules\eav\models\EavEntityModel;
 
 use Yii;
@@ -82,11 +83,11 @@ class DefaultController extends Controller
                 }
             }
 
-            Yii::$app->db->createCommand()->delete("{{%eav_entity_attribute}}", "entity_id = :entityId", [':entityId' => $entity->id])->execute();
+            Yii::$app->db->createCommand()->delete(EavEntityAttribute::tableName(), "entity_id = :entityId", [':entityId' => $entity->id])->execute();
 
             if (is_array($attributes)) {
                 foreach ($attributes as $order => $attributeId) {
-                    Yii::$app->db->createCommand()->insert('{{%eav_entity_attribute}}', [
+                    Yii::$app->db->createCommand()->insert(EavEntityAttribute::tableName(), [
                         'entity_id' => $entity->id,
                         'attribute_id' => $attributeId,
                         'order' => $order,
@@ -156,7 +157,7 @@ class DefaultController extends Controller
                     $categories = $model->getEavCategories();
 
                     if ($categories && !empty($categories)) {
-                        $categories = ArrayHelper::merge(['' => Yii::t('yee', 'Not Selected')], $categories);
+                        $categories = ArrayHelper::merge(['' => Yii::t('eav', 'Not Selected')], $categories);
                         $dropDown = Html::dropDownList('entityCategory', null, $categories, ['id' => 'entityCategory']);
                         return ['list' => $dropDown];
                     }

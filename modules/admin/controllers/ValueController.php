@@ -3,7 +3,7 @@
 namespace lo\modules\eav\modules\admin\controllers;
 
 use Yii;
-use lo\modules\eav\models\EavAttributeValue;
+use lo\modules\eav\models\EavValue;
 use yii\web\Controller;
 use lo\core\actions\crud;
 
@@ -19,7 +19,7 @@ class ValueController extends Controller
 
     public function actions()
     {
-        $class = EavAttributeValue::className();
+        $class = EavValue::className();
         return [
             'index'=>[
                 'class'=> crud\Index::className(),

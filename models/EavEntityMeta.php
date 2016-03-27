@@ -32,10 +32,9 @@ class EavEntityMeta extends MetaFields
                 "definition" => [
                     "class" => \lo\core\db\fields\TextField::className(),
                     "title" => Yii::t('backend', 'Category'),
-                    "showInGrid" => true,
-                    "showInFilter" => true,
-                    "isRequired" => true,
-                    "editInGrid" => true,
+                    "showInGrid" => false,
+                    "showInFilter" => false,
+                    "isRequired" => false,
                 ],
                 "params" => [$this->owner, "category_id"]
             ],

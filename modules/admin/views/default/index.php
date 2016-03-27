@@ -1,6 +1,8 @@
 <?php
 
 use lo\modules\eav\assets\EavAsset;
+use lo\core\widgets\admin\TabMenu;
+
 use yii\helpers\Html;
 
 
@@ -12,6 +14,7 @@ $this->params['breadcrumbs'][] = Yii::t('eav', 'EAV');
 EavAsset::register($this);
 ?>
 <div class="eav-index">
+    <?=TabMenu::widget()?>
 
     <div class="row">
         <div class="col-sm-12">

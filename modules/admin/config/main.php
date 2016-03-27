@@ -7,6 +7,10 @@ return [
             'defaultRoute' => 'default',
 			'menuItems' => [
                 [
+                    'label' => 'Form',
+                    'url' => ['/eav/default/index'],
+                ],
+                [
                     'label' => 'Entity',
                     'url' => ['/eav/entity-model/index'],
                 ],
