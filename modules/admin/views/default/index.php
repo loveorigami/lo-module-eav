@@ -2,6 +2,7 @@
 
 use lo\modules\eav\assets\EavAsset;
 use lo\core\widgets\admin\TabMenu;
+use yii\bootstrap\Alert;
 
 use yii\helpers\Html;
 
@@ -15,6 +16,25 @@ EavAsset::register($this);
 ?>
 <div class="eav-index">
     <?=TabMenu::widget()?>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <?= Alert::widget([
+                'options' => ['class' => 'alert-primary eav-link-alert'],
+                'body' => '<span class="glyphicon glyphicon-refresh glyphicon-spin"></span>',
+            ]) ?>
+
+            <?= Alert::widget([
+                'options' => ['class' => 'alert-danger eav-link-alert'],
+                'body' => Yii::t('eav', 'An error occurred during saving EAV attributes!'),
+            ]) ?>
+
+            <?= Alert::widget([
+                'options' => ['class' => 'alert-info eav-link-alert'],
+                'body' => Yii::t('eav', 'The changes have been saved.'),
+            ]) ?>
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-sm-12">
