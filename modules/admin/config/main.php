@@ -4,11 +4,11 @@ return [
     'modules' => [
         'eav' => [
             'class' => 'lo\modules\eav\modules\admin\Module',
-            'defaultRoute' => 'entity',
+            'defaultRoute' => 'entity-model',
 			'menuItems' => [
                 [
                     'label' => 'Entity',
-                    'url' => ['/eav/entity/index'],
+                    'url' => ['/eav/entity-model/index'],
                 ],
                 [
                     'label' => 'Attribute',

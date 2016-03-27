@@ -23,6 +23,6 @@ $ php yii migrate/up --migrationPath=@vendor/loveorigami/lo-module-eav/migration
 
 ### 3. Create database schema
 ```bash
-$ php yii migrate/create --migrationPath=@vendor/loveorigami/lo-module-eav/migration "eav-tbl..."
+$ php yii migrate/create --migrationPath=@vendor/loveorigami/lo-module-eav/migrations "eav-tbl..."
 
 ```
