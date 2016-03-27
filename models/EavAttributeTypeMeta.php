@@ -11,23 +11,17 @@ use lo\core\db\MetaFields;
 class EavAttributeTypeMeta extends MetaFields
 {
 
+    public static function getStoreTypes()
+    {
+        return EavAttributeType::getStoreTypes();
+    }
+
     /**
      * @inheritdoc
      */
     protected function config()
     {
         return [
-            "handlerClass" => [
-                "definition" => [
-                    "class" => \lo\core\db\fields\TextField::className(),
-                    "title" => Yii::t('backend', 'handlerClass'),
-                    "showInGrid" => true,
-                    "showInFilter" => true,
-                    "isRequired" => true,
-                    "editInGrid" => true,
-                ],
-                "params" => [$this->owner, "handlerClass"]
-            ],
             "name" => [
                 "definition" => [
                     "class" => \lo\core\db\fields\TextField::className(),
@@ -39,16 +33,18 @@ class EavAttributeTypeMeta extends MetaFields
                 ],
                 "params" => [$this->owner, "name"]
             ],
-            "storeType" => [
+
+            "store_type" => [
                 "definition" => [
-                    "class" => \lo\core\db\fields\TextField::className(),
-                    "title" => Yii::t('backend', 'storeType'),
+                    "class" => \lo\core\db\fields\ListField::className(),
+                    "title" => Yii::t('backend', 'Store type'),
+                    "data" => [$this, "getStoreTypes"], // массив всех типов (см. выше)
                     "showInGrid" => true,
                     "showInFilter" => true,
-                    "isRequired" => false,
-                    "editInGrid" => true,
+                    "isRequired" => true,
+                    "editInGrid" => false,
                 ],
-                "params" => [$this->owner, "storeType"]
+                "params" => [$this->owner, "store_type"]
             ],
         ];
     }

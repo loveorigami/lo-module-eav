@@ -18,7 +18,7 @@ use Yii;
  */
 class EavAttributeOption extends \lo\core\db\ActiveRecord
 {
-    public $tplDir = '@lo/modules/eav/modules/admin/views/option/tpl/';
+    public $tplDir = '@lo/modules/eav/modules/admin/views/attribute-option/tpl/';
     /**
      * @inheritdoc
      */
@@ -38,25 +38,18 @@ class EavAttributeOption extends \lo\core\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getEavAttributes()
-    {
-        return $this->hasMany(EavAttribute::className(), ['defaultOptionId' => 'id'])
-          ->orderBy(['order' => SORT_DESC]);
-    }
+//    public function getEavAttributes()
+//    {
+//        return $this->hasMany(EavAttribute::className(), ['default_option_id' => 'id'])
+//          ->orderBy(['order' => SORT_DESC]);
+//    }
 
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getAttribute($name = '')
     {
-        return $this->hasOne(EavAttribute::className(), ['id' => 'attributeId']);
+        return $this->hasOne(EavAttribute::className(), ['id' => 'attribute_id']);
     }
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getValues()
-    {
-        return $this->hasMany(EavAttributeValue::className(), ['optionId' => 'id']);
-    }
 }

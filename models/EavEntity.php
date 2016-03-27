@@ -30,12 +30,22 @@ class EavEntity extends \lo\core\db\ActiveRecord
     {
         return EavEntityMeta::className();
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getEntityModel()
+    {
+        return $this->hasOne(EavEntityModel::className(), ['id' => 'model_id']);
+    }
+
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getEavAttributes()
     {
-        return $this->hasMany(EavAttribute::className(), ['entityId' => 'id'])
-          ->orderBy(['order' => SORT_DESC]);
+        return $this->hasMany(EavAttribute::className(), ['id' => 'attribute_id'])
+            ->viaTable(EavEntityAttribute::tableName(), ['entity_id' => 'id']);
+        //->orderBy(['eav_entity_attribute.order' => SORT_DESC]);
     }
 }

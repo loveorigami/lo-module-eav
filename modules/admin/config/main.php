@@ -4,7 +4,7 @@ return [
     'modules' => [
         'eav' => [
             'class' => 'lo\modules\eav\modules\admin\Module',
-            'defaultRoute' => 'entity-model',
+            'defaultRoute' => 'default',
 			'menuItems' => [
                 [
                     'label' => 'Entity',
@@ -16,11 +16,11 @@ return [
                 ],
                 [
                     'label' => 'Option',
-                    'url' => ['/eav/option/index'],
+                    'url' => ['/eav/attribute-option/index'],
                 ],
                 [
                     'label' => 'Type',
-                    'url' => ['/eav/type/index'],
+                    'url' => ['/eav/attribute-type/index'],
                 ],
                 [
                     'label' => 'Value',

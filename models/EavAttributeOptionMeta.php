@@ -27,14 +27,15 @@ class EavAttributeOptionMeta extends MetaFields
     protected function config()
     {
         return [
-            "attributeId" => [
+            "attribute_id" => [
                 "definition" => [
                     "class" => \lo\core\db\fields\HasOneField::className(),
                     "title" => Yii::t('backend', 'Attribute'),
                     "data" => [$this, "getAtributes"], // массив всех типов (см. выше)
                     "editInGrid" => false,
+                    "isRequired" => true,
                 ],
-                "params" => [$this->owner, "attributeId", "attribute"] // id и relation getEavType
+                "params" => [$this->owner, "attribute_id", "attribute"] // id и relation getAttribute
             ],
             "value" => [
                 "definition" => [

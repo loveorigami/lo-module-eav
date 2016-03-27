@@ -17,18 +17,7 @@ class EavEntityMeta extends MetaFields
     protected function config()
     {
         return [
-            "entityName" => [
-                "definition" => [
-                    "class" => \lo\core\db\fields\TextField::className(),
-                    "title" => Yii::t('backend', 'Name'),
-                    "showInGrid" => true,
-                    "showInFilter" => true,
-                    "isRequired" => true,
-                    "editInGrid" => true,
-                ],
-                "params" => [$this->owner, "entityName"]
-            ],
-            "entityModel" => [
+            "model_id" => [
                 "definition" => [
                     "class" => \lo\core\db\fields\TextField::className(),
                     "title" => Yii::t('backend', 'entityModel'),
@@ -37,9 +26,9 @@ class EavEntityMeta extends MetaFields
                     "isRequired" => true,
                     "editInGrid" => true,
                 ],
-                "params" => [$this->owner, "entityModel"]
+                "params" => [$this->owner, "model_id"]
             ],
-            "categoryId" => [
+            "category_id" => [
                 "definition" => [
                     "class" => \lo\core\db\fields\TextField::className(),
                     "title" => Yii::t('backend', 'Category'),
@@ -48,7 +37,7 @@ class EavEntityMeta extends MetaFields
                     "isRequired" => true,
                     "editInGrid" => true,
                 ],
-                "params" => [$this->owner, "categoryId"]
+                "params" => [$this->owner, "category_id"]
             ],
         ];
     }
