@@ -70,9 +70,9 @@ class EavBehavior extends Behavior
     {
         $categoryId = $this->getEavCatgoryId();
 
-        if ($categoryId) {
+        //if ($categoryId) {
             $this->loadEavAttributes();
-        }
+        //}
     }
 
     protected function loadEavAttributes()

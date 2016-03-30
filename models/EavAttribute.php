@@ -4,6 +4,7 @@ namespace lo\modules\eav\models;
 
 use Yii;
 use lo\core\helpers\FA;
+use yii\base\InvalidParamException;
 
 /**
  * This is the model class for table "{{%eav_attribute}}".

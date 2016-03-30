@@ -14,6 +14,8 @@ trait EavQueryTrait
 
     public function andEavWhere($condition, $name, $value)
     {
+        return $this;
+
         $modelClass = $this->modelClass;
         $tableName = $modelClass::tableName();
         $categoryField = $modelClass::getEavCategoryField();
