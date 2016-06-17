@@ -37,7 +37,7 @@ class EavAttributeMeta extends MetaFields
         return [
             "name" => [
                 "definition" => [
-                    "class" => \lo\core\db\fields\TextField::className(),
+                    "class" => \lo\core\db\fields\TextField::class,
                     "title" => Yii::t('backend', 'Field'),
                     "showInGrid" => true,
                     "showInFilter" => true,
@@ -49,7 +49,7 @@ class EavAttributeMeta extends MetaFields
 
             "label" => [
                 "definition" => [
-                    "class" => \lo\core\db\fields\TextField::className(),
+                    "class" => \lo\core\db\fields\TextField::class,
                     "title" => Yii::t('backend', 'Label'),
                     "showInGrid" => true,
                     "showInFilter" => true,
@@ -61,7 +61,7 @@ class EavAttributeMeta extends MetaFields
 
             "icon" => [
                 "definition" => [
-                    "class" => \lo\core\db\fields\ListField::className(),
+                    "class" => \lo\core\db\fields\ListField::class,
                     "inputClassOptions" => [
                         "options"=>[
                             'class' => 'clearfix non-styler form-control fa-font-family',
@@ -80,7 +80,7 @@ class EavAttributeMeta extends MetaFields
 
             "type_id" => [
                 "definition" => [
-                    "class" => \lo\core\db\fields\HasOneField::className(),
+                    "class" => \lo\core\db\fields\HasOneField::class,
                     "title" => Yii::t('backend', 'Type'),
                     "data" => [$this, "getTypes"], // массив всех типов (см. выше)
                     "editInGrid" => true,
@@ -90,7 +90,7 @@ class EavAttributeMeta extends MetaFields
 
             "required" => [
                 "definition" => [
-                    "class" => \lo\core\db\fields\CheckBoxField::className(),
+                    "class" => \lo\core\db\fields\CheckBoxField::class,
                     "title" => Yii::t('common', 'Required'),
                     "showInGrid" => true,
                     "editInGrid" => true,
@@ -101,7 +101,7 @@ class EavAttributeMeta extends MetaFields
 
             "default_value" => [
                 "definition" => [
-                    "class" => \lo\core\db\fields\TextField::className(),
+                    "class" => \lo\core\db\fields\TextField::class,
                     "title" => Yii::t('backend', 'defaultValue'),
                     "showInGrid" => true,
                     "showInFilter" => false,

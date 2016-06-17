@@ -44,7 +44,7 @@ class EavAttribute extends \lo\core\db\ActiveRecord
      */
     public function metaClass()
     {
-        return EavAttributeMeta::className();
+        return EavAttributeMeta::class;
     }
 
 
@@ -61,7 +61,7 @@ class EavAttribute extends \lo\core\db\ActiveRecord
      */
     public function getDefaultOption()
     {
-        return $this->hasOne(EavAttributeOption::className(), ['id' => 'default_value']);
+        return $this->hasOne(EavAttributeOption::class, ['id' => 'default_value']);
     }
 
     /**
@@ -69,7 +69,7 @@ class EavAttribute extends \lo\core\db\ActiveRecord
      */
     public function getEavType()
     {
-        return $this->hasOne(EavAttributeType::className(), ['id' => 'type_id']);
+        return $this->hasOne(EavAttributeType::class, ['id' => 'type_id']);
     }
 
     /**
@@ -77,7 +77,7 @@ class EavAttribute extends \lo\core\db\ActiveRecord
      */
     public function getEntity()
     {
-        return $this->hasMany(EavEntity::className(), ['id' => 'entity_id'])
+        return $this->hasMany(EavEntity::class, ['id' => 'entity_id'])
             ->viaTable(EavEntityAttribute::tableName(), ['attribute_id' => 'id']);
     }
 
@@ -86,7 +86,7 @@ class EavAttribute extends \lo\core\db\ActiveRecord
      */
     public function getEavOptions()
     {
-        return $this->hasMany(EavAttributeOption::className(), ['attribute_id' => 'id']);
+        return $this->hasMany(EavAttributeOption::class, ['attribute_id' => 'id']);
     }
 
     public function getEavOptionsList()
@@ -104,7 +104,7 @@ class EavAttribute extends \lo\core\db\ActiveRecord
      */
     public function getEavValues()
     {
-        return $this->hasMany(EavValue::className(), ['attribute_id' => 'id']);
+        return $this->hasMany(EavValue::class, ['attribute_id' => 'id']);
     }
 
     public static function getEavAttributes()

@@ -29,7 +29,7 @@ class EavValueMeta extends MetaFields
         return [
             "value" => [
                 "definition" => [
-                    "class" => \lo\core\db\fields\TextAreaField::className(),
+                    "class" => \lo\core\db\fields\TextAreaField::class,
                     "title" => Yii::t('backend', 'Value'),
                     "showInGrid" => true,
                     "showInFilter" => true,
@@ -40,7 +40,7 @@ class EavValueMeta extends MetaFields
 
             "entity_id" => [
                 "definition" => [
-                    "class" => \lo\core\db\fields\TextField::className(),
+                    "class" => \lo\core\db\fields\TextField::class,
                     "title" => Yii::t('backend', 'EntityId'),
                     "showInGrid" => true,
                     "showInFilter" => true,
@@ -52,7 +52,7 @@ class EavValueMeta extends MetaFields
 
             "item_id" => [
                 "definition" => [
-                    "class" => \lo\core\db\fields\TextField::className(),
+                    "class" => \lo\core\db\fields\TextField::class,
                     "title" => Yii::t('backend', 'ItemId'),
                     "showInGrid" => true,
                     "showInFilter" => true,
@@ -64,7 +64,7 @@ class EavValueMeta extends MetaFields
 
             "attribute_id" => [
                 "definition" => [
-                    "class" => \lo\core\db\fields\HasOneField::className(),
+                    "class" => \lo\core\db\fields\HasOneField::class,
                     "title" => Yii::t('backend', 'Attribute'),
                     "showInFilter" => false,
                     "eagerLoading" => true,

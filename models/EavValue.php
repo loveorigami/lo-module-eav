@@ -32,7 +32,7 @@ class EavValue extends \lo\core\db\ActiveRecord
      */
     public function metaClass()
     {
-        return EavValueMeta::className();
+        return EavValueMeta::class;
     }
 
 
@@ -41,7 +41,7 @@ class EavValue extends \lo\core\db\ActiveRecord
      */
     public function getEavAttribute()
     {
-        return $this->hasOne(EavAttribute::className(), ['id' => 'attribute_id']);
+        return $this->hasOne(EavAttribute::class, ['id' => 'attribute_id']);
     }
 
     /**
@@ -49,7 +49,7 @@ class EavValue extends \lo\core\db\ActiveRecord
      */
     public function getEntity()
     {
-        return $this->hasOne(Eav::className(), ['id' => 'entity_id']);
+        return $this->hasOne(Eav::class, ['id' => 'entity_id']);
     }
 
     /**
@@ -57,6 +57,6 @@ class EavValue extends \lo\core\db\ActiveRecord
      */
     public function getOption()
     {
-        return $this->hasOne(EavAttributeOption::className(), ['id' => 'value']);
+        return $this->hasOne(EavAttributeOption::class, ['id' => 'value']);
     }
 }

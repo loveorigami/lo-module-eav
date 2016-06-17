@@ -27,7 +27,7 @@ class DefaultController extends Controller
     {
         return ArrayHelper::merge(parent::behaviors(), [
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class' => VerbFilter::class,
                 'actions' => [
                     'get-attributes' => ['post'],
                     'get-categories' => ['post'],

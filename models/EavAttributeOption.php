@@ -32,7 +32,7 @@ class EavAttributeOption extends \lo\core\db\ActiveRecord
      */
     public function metaClass()
     {
-        return EavAttributeOptionMeta::className();
+        return EavAttributeOptionMeta::class;
     }
 
     /**
@@ -40,7 +40,7 @@ class EavAttributeOption extends \lo\core\db\ActiveRecord
      */
 //    public function getEavAttributes()
 //    {
-//        return $this->hasMany(EavAttribute::className(), ['default_option_id' => 'id'])
+//        return $this->hasMany(EavAttribute::class, ['default_option_id' => 'id'])
 //          ->orderBy(['order' => SORT_DESC]);
 //    }
 
@@ -49,7 +49,7 @@ class EavAttributeOption extends \lo\core\db\ActiveRecord
      */
     public function getAttribute($name = '')
     {
-        return $this->hasOne(EavAttribute::className(), ['id' => 'attribute_id']);
+        return $this->hasOne(EavAttribute::class, ['id' => 'attribute_id']);
     }
 
 }

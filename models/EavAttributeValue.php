@@ -32,7 +32,7 @@ class EavAttributeValue extends \lo\core\db\ActiveRecord
      */
     public function metaClass()
     {
-        return EavAttributeValueMeta::className();
+        return EavAttributeValueMeta::class;
     }
 
     /**
@@ -44,9 +44,9 @@ class EavAttributeValue extends \lo\core\db\ActiveRecord
             //[['entityId', 'attributeId'], 'required'],
             [['entityId', 'attributeId', 'optionId'], 'integer'],
             [['value'], 'string', 'max' => 255],
-            //[['attributeId'], 'exist', 'skipOnError' => true, 'targetClass' => EavAttribute::className(), 'targetAttribute' => ['attributeId' => 'id']],
-            //[['entityId'], 'exist', 'skipOnError' => true, 'targetClass' => Eav::className(), 'targetAttribute' => ['entityId' => 'id']],
-            //[['optionId'], 'exist', 'skipOnError' => true, 'targetClass' => EavAttributeOption::className(), 'targetAttribute' => ['optionId' => 'id']],
+            //[['attributeId'], 'exist', 'skipOnError' => true, 'targetClass' => EavAttribute::class, 'targetAttribute' => ['attributeId' => 'id']],
+            //[['entityId'], 'exist', 'skipOnError' => true, 'targetClass' => Eav::class, 'targetAttribute' => ['entityId' => 'id']],
+            //[['optionId'], 'exist', 'skipOnError' => true, 'targetClass' => EavAttributeOption::class, 'targetAttribute' => ['optionId' => 'id']],
         ];
     }
 
@@ -55,7 +55,7 @@ class EavAttributeValue extends \lo\core\db\ActiveRecord
      */
     public function getEavAttribute()
     {
-        return $this->hasOne(EavAttribute::className(), ['id' => 'attributeId']);
+        return $this->hasOne(EavAttribute::class, ['id' => 'attributeId']);
     }
 
     /**
@@ -63,7 +63,7 @@ class EavAttributeValue extends \lo\core\db\ActiveRecord
      */
     public function getEntity()
     {
-        return $this->hasOne(Eav::className(), ['id' => 'entityId']);
+        return $this->hasOne(Eav::class, ['id' => 'entityId']);
     }
 
     /**
@@ -71,7 +71,7 @@ class EavAttributeValue extends \lo\core\db\ActiveRecord
      */
     public function getOption()
     {
-        return $this->hasOne(EavAttributeOption::className(), ['id' => 'optionId']);
+        return $this->hasOne(EavAttributeOption::class, ['id' => 'optionId']);
     }
     
     public function getValue(){

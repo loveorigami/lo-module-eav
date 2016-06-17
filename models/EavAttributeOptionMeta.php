@@ -29,7 +29,7 @@ class EavAttributeOptionMeta extends MetaFields
         return [
             "attribute_id" => [
                 "definition" => [
-                    "class" => \lo\core\db\fields\HasOneField::className(),
+                    "class" => \lo\core\db\fields\HasOneField::class,
                     "title" => Yii::t('backend', 'Attribute'),
                     "data" => [$this, "getAtributes"], // массив всех типов (см. выше)
                     "editInGrid" => false,
@@ -39,7 +39,7 @@ class EavAttributeOptionMeta extends MetaFields
             ],
             "value" => [
                 "definition" => [
-                    "class" => \lo\core\db\fields\TextField::className(),
+                    "class" => \lo\core\db\fields\TextField::class,
                     "title" => Yii::t('backend', 'Value'),
                     "showInGrid" => true,
                     "showInFilter" => true,

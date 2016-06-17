@@ -24,7 +24,7 @@ class EavAttributeTypeMeta extends MetaFields
         return [
             "name" => [
                 "definition" => [
-                    "class" => \lo\core\db\fields\TextField::className(),
+                    "class" => \lo\core\db\fields\TextField::class,
                     "title" => Yii::t('backend', 'Name'),
                     "showInGrid" => true,
                     "showInFilter" => true,
@@ -36,7 +36,7 @@ class EavAttributeTypeMeta extends MetaFields
 
             "store_type" => [
                 "definition" => [
-                    "class" => \lo\core\db\fields\ListField::className(),
+                    "class" => \lo\core\db\fields\ListField::class,
                     "title" => Yii::t('backend', 'Store type'),
                     "data" => [$this, "getStoreTypes"], // массив всех типов (см. выше)
                     "showInGrid" => true,

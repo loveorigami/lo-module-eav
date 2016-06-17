@@ -19,7 +19,7 @@ class EavEntityMeta extends MetaFields
         return [
             "model_id" => [
                 "definition" => [
-                    "class" => \lo\core\db\fields\TextField::className(),
+                    "class" => \lo\core\db\fields\TextField::class,
                     "title" => Yii::t('backend', 'entityModel'),
                     "showInGrid" => true,
                     "showInFilter" => true,
@@ -30,7 +30,7 @@ class EavEntityMeta extends MetaFields
             ],
             "category_id" => [
                 "definition" => [
-                    "class" => \lo\core\db\fields\TextField::className(),
+                    "class" => \lo\core\db\fields\TextField::class,
                     "title" => Yii::t('backend', 'Category'),
                     "showInGrid" => false,
                     "showInFilter" => false,

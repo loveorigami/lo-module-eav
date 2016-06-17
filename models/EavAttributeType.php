@@ -34,7 +34,7 @@ class EavAttributeType extends \lo\core\db\ActiveRecord
      */
     public function metaClass()
     {
-        return EavAttributeTypeMeta::className();
+        return EavAttributeTypeMeta::class;
     }
 
     public static function getStoreTypes()

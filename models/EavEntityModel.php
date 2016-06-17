@@ -28,7 +28,7 @@ class EavEntityModel extends \lo\core\db\ActiveRecord
      */
     public function metaClass()
     {
-        return EavEntityModelMeta::className();
+        return EavEntityModelMeta::class;
     }
 
     /**
@@ -36,7 +36,7 @@ class EavEntityModel extends \lo\core\db\ActiveRecord
      */
     public function getEavAttributes()
     {
-        return $this->hasMany(EavAttribute::className(), ['id' => 'entity_id'])
+        return $this->hasMany(EavAttribute::class, ['id' => 'entity_id'])
             ->viaTable('{{%eav__entity_attribute}}', ['attribute_id' => 'id'])
             ->orderBy(['order' => SORT_DESC]);
     }
