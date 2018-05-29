@@ -1,6 +1,8 @@
 <?php
 
-use console\db\Migration;
+namespace lo\modules\eav\migrations;
+
+use lo\core\db\Migration;
 
 class m160327_075320_eav_init extends Migration
 {
@@ -49,8 +51,22 @@ class m160327_075320_eav_init extends Migration
 
         $this->createIndex('eav_attribute_type_status', $tbl_attribute_type, ['status']);
 
-        $this->insert($tbl_attribute_type, ['name' => 'text', 'store_type' => 'raw']);
-        $this->insert($tbl_attribute_type, ['name' => 'select', 'store_type' => 'option']);
+        $this->insert($tbl_attribute_type, [
+            'author_id' => 1,
+            'updater_id' => 1,
+            'created_at' => time(),
+            'updated_at' => time(),
+            'name' => 'text',
+            'store_type' => 'raw'
+        ]);
+        $this->insert($tbl_attribute_type, [
+            'author_id' => 1,
+            'updater_id' => 1,
+            'created_at' => time(),
+            'updated_at' => time(),
+            'name' => 'select',
+            'store_type' => 'option'
+        ]);
 
         //---------------- eav_attribute ----------------
 

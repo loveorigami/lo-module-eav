@@ -18,7 +18,7 @@ function loadEavAttributes() {
 
     $.ajax({
         type: "POST",
-        url: '/eav/default/get-attributes',
+        url: 'get-attributes',
         data: {model_id: model_id, category_id: category_id},
         success: function (data) {
             $('.eav-attributes.eav-available .content').html(data.available);
@@ -40,7 +40,7 @@ function loadEavCategories() {
 
     $.ajax({
         type: "POST",
-        url: '/eav/default/get-categories',
+        url: 'get-categories',
         data: {model_id: model_id},
         success: function (data) {
             $('.eav-categories-wrapper').parent().show();
@@ -78,7 +78,7 @@ function saveEavAttributes() {
 
     $.ajax({
         type: "POST",
-        url: '/eav/default/set-attributes',
+        url: 'set-attributes',
         data: {
             attributes: eavAttributes,
             model_id: entityModelId,

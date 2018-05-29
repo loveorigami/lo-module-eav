@@ -2,9 +2,12 @@
 
 namespace lo\modules\eav\models;
 
+use lo\core\db\ActiveRecord;
+use lo\core\helpers\ArrayHelper;
+use lo\modules\eav\models\meta\EavAttributeMeta;
 use Yii;
 use lo\core\helpers\FA;
-use yii\base\InvalidParamException;
+use yii\base\InvalidArgumentException;
 
 /**
  * This is the model class for table "{{%eav_attribute}}".
@@ -21,13 +24,18 @@ use yii\base\InvalidParamException;
  * @property EavAttributeOption $default_option
  * @property EavAttributeType $type
  * @property EavAttributeOption[] $eavAttributeOptions
+ * @property array $eavOptionsList
+ * @property \yii\db\ActiveQuery $eavEntity
+ * @property mixed $value
+ * @property \yii\db\ActiveQuery $defaultOption
+ * @property \yii\db\ActiveQuery $eavType
+ * @property \yii\db\ActiveQuery $eavOptions
  * @property EavValue[] $eavValues
  */
-class EavAttribute extends \lo\core\db\ActiveRecord
+class EavAttribute extends ActiveRecord
 {
-    public $tplDir = '@lo/modules/eav/modules/admin/views/attribute/tpl/';
     /**
-     * @var lo\modules\eav\models\EavValue
+     * @var EavValue
      */
     private $_value;
 
@@ -47,7 +55,9 @@ class EavAttribute extends \lo\core\db\ActiveRecord
         return EavAttributeMeta::class;
     }
 
-
+    /**
+     * @return array
+     */
     public function events()
     {
         return [
@@ -75,7 +85,7 @@ class EavAttribute extends \lo\core\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getEntity()
+    public function getEavEntity()
     {
         return $this->hasMany(EavEntity::class, ['id' => 'entity_id'])
             ->viaTable(EavEntityAttribute::tableName(), ['attribute_id' => 'id']);
@@ -89,6 +99,9 @@ class EavAttribute extends \lo\core\db\ActiveRecord
         return $this->hasMany(EavAttributeOption::class, ['attribute_id' => 'id']);
     }
 
+    /**
+     * @return array
+     */
     public function getEavOptionsList()
     {
         $result = [];
@@ -107,6 +120,9 @@ class EavAttribute extends \lo\core\db\ActiveRecord
         return $this->hasMany(EavValue::class, ['attribute_id' => 'id']);
     }
 
+    /**
+     * @return mixed
+     */
     public static function getEavAttributes()
     {
         $result = static::find()->all();
@@ -116,13 +132,19 @@ class EavAttribute extends \lo\core\db\ActiveRecord
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * @return \rmrevin\yii\fontawesome\component\Icon
      */
     public function getIcon()
     {
-        return empty($this->icon) ? '' : FA::icon($this->icon);
+        return empty($this->icon) ? null : FA::icon($this->icon);
     }
 
+    /**
+     * @param $entityModel
+     * @param $catgoryId
+     * @param $itemId
+     * @return array|null|\yii\db\ActiveRecord
+     */
     protected function loadValue($entityModel, $catgoryId, $itemId)
     {
         $modelTable = EavEntityModel::tableName();
@@ -140,6 +162,12 @@ class EavAttribute extends \lo\core\db\ActiveRecord
         return ($value) ? $value : null;
     }
 
+    /**
+     * @param $entityModel
+     * @param $catgoryId
+     * @param $itemId
+     * @return array|EavValue|null|\yii\db\ActiveRecord
+     */
     public function getValue($entityModel, $catgoryId, $itemId)
     {
         if (!isset($this->_value) || !$this->_value) {
@@ -148,6 +176,13 @@ class EavAttribute extends \lo\core\db\ActiveRecord
         return $this->_value;
     }
 
+    /**
+     * @param $entityModel
+     * @param $catgoryId
+     * @param $itemId
+     * @param $value
+     * @throws \yii\db\Exception
+     */
     public function setValue($entityModel, $catgoryId, $itemId, $value)
     {
         if (!isset($this->_value) || !$this->_value) {
@@ -157,10 +192,10 @@ class EavAttribute extends \lo\core\db\ActiveRecord
         if (!$this->_value) {
 
             if (!$eavModel = EavEntityModel::findOne(['entity_model' => $entityModel])) {
-                throw new InvalidParamException(Yii::t('eav', 'Model was not found.'));
+                throw new \InvalidArgumentException(Yii::t('eav', 'Model was not found.'));
             }
             if (!$eavEntity = EavEntity::findOne(['model_id' => $eavModel->id, 'category_id' => $catgoryId])) {
-                throw new InvalidParamException(Yii::t('eav', 'Entity was not found.'));
+                throw new InvalidArgumentException(Yii::t('eav', 'Entity was not found.'));
             }
 
             $eavValue = new EavValue([
@@ -180,11 +215,17 @@ class EavAttribute extends \lo\core\db\ActiveRecord
         $this->_value->value = $value;
     }
 
-    public function afterSave()
+    /**
+     * @param bool $insert
+     * @param array $changedAttributes
+     */
+    public function afterSave($insert, $changedAttributes)
     {
+
         if (isset($this->_value) && $this->_value) {
             $this->_value->save();
         }
     }
+
 
 }

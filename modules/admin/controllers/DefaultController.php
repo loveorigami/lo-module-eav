@@ -78,7 +78,7 @@ class DefaultController extends Controller
                 try {
                     $entity = new EavEntity(['model_id' => $modelId, 'category_id' => $categoryId]);
                     $entity->save();
-                } catch (Exception $exc) {
+                } catch (\Exception $exc) {
                     return false;
                 }
             }
@@ -91,6 +91,10 @@ class DefaultController extends Controller
                         'entity_id' => $entity->id,
                         'attribute_id' => $attributeId,
                         'order' => $order,
+                        'author_id' => 1,
+                        'updater_id' => 1,
+                        'created_at' => time(),
+                        'updated_at' => time(),
                     ])->execute();
                 }
             }
@@ -117,7 +121,7 @@ class DefaultController extends Controller
             try {
                 $entity = new EavEntity($params);
                 $entity->save();
-            } catch (Exception $exc) {
+            } catch (\Exception $exc) {
                 return false;
             }
         }
@@ -162,7 +166,7 @@ class DefaultController extends Controller
                         return ['list' => $dropDown];
                     }
                 }
-            } catch (Exception $exc) {
+            } catch (\Exception $exc) {
                 return null;
             }
         }

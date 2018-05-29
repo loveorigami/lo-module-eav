@@ -15,8 +15,7 @@ $this->params['breadcrumbs'][] = Yii::t('eav', 'EAV');
 EavAsset::register($this);
 ?>
 <div class="eav-index">
-    <?=TabMenu::widget()?>
-
+    <?= $this->render('/_menu'); ?>
     <div class="row">
         <div class="col-sm-12">
             <?= Alert::widget([

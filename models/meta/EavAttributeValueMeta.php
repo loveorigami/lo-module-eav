@@ -1,6 +1,7 @@
 <?php
-namespace lo\modules\eav\models;
+namespace lo\modules\eav\models\meta;
 
+use lo\modules\eav\models\EavAttribute;
 use Yii;
 use lo\core\db\MetaFields;
 use yii\helpers\ArrayHelper;
@@ -10,7 +11,7 @@ use yii\helpers\ArrayHelper;
  * Class EavAttributeMeta
  * Мета описание модели
  */
-class EavValueMeta extends MetaFields
+class EavAttributeValueMeta extends MetaFields
 {
     /**
      * Возвращает массив для привязки к городам
@@ -38,7 +39,7 @@ class EavValueMeta extends MetaFields
                 "params" => [$this->owner, "value"]
             ],
 
-            "entity_id" => [
+            "entityId" => [
                 "definition" => [
                     "class" => \lo\core\db\fields\TextField::class,
                     "title" => Yii::t('backend', 'EntityId'),
@@ -47,22 +48,10 @@ class EavValueMeta extends MetaFields
                     "isRequired" => true,
                     "editInGrid" => false,
                 ],
-                "params" => [$this->owner, "entity_id"]
+                "params" => [$this->owner, "entityId"]
             ],
 
-            "item_id" => [
-                "definition" => [
-                    "class" => \lo\core\db\fields\TextField::class,
-                    "title" => Yii::t('backend', 'ItemId'),
-                    "showInGrid" => true,
-                    "showInFilter" => true,
-                    "isRequired" => true,
-                    "editInGrid" => false,
-                ],
-                "params" => [$this->owner, "item_id"]
-            ],
-
-            "attribute_id" => [
+            "attributeId" => [
                 "definition" => [
                     "class" => \lo\core\db\fields\HasOneField::class,
                     "title" => Yii::t('backend', 'Attribute'),
@@ -72,8 +61,21 @@ class EavValueMeta extends MetaFields
                     "data" => [$this, "getAttributes"], // массив всех типов (см. выше)
                     "gridAttr" => 'label'
                 ],
-                "params" => [$this->owner, "attribute_id", "eavAttribute"] // id и relation getEntity
+                "params" => [$this->owner, "attributeId", "eavAttribute"] // id и relation getEntity
             ],
+
+            "optionId" => [
+                "definition" => [
+                    "class" => \lo\core\db\fields\TextField::class,
+                    "title" => Yii::t('backend', 'Option'),
+                    "showInGrid" => true,
+                    "showInFilter" => true,
+                    "isRequired" => true,
+                    "editInGrid" => false,
+                ],
+                "params" => [$this->owner, "optionId"]
+            ],
+
         ];
     }
 }

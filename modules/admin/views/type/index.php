@@ -9,7 +9,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="type-index">
-    <?=TabMenu::widget()?>
+    <?= $this->render('/_menu'); ?>
     <?=CrudLinks::widget(["action"=>CrudLinks::CRUD_LIST, "model"=>$searchModel])?>
     <?= $this->render('_filter', ['model' => $searchModel]); ?>
 

@@ -2,11 +2,9 @@
 
 namespace lo\modules\eav\models;
 
-use Yii;
+use lo\modules\eav\models\meta\EavValueMeta;
 
 /**
- * This is the model class for table "{{%eav_attribute_value}}".
- *
  * @property integer $id
  * @property integer $entityId
  * @property integer $attributeId
@@ -14,7 +12,9 @@ use Yii;
  * @property integer $optionId
  *
  * @property EavAttribute $attribute
- * @property Eav $entity
+ * @property EavEntity $entity
+ * @property \yii\db\ActiveQuery $eavEntity
+ * @property \yii\db\ActiveQuery $eavAttribute
  * @property EavAttributeOption $option
  */
 class EavValue extends \lo\core\db\ActiveRecord
@@ -47,9 +47,9 @@ class EavValue extends \lo\core\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getEntity()
+    public function getEavEntity()
     {
-        return $this->hasOne(Eav::class, ['id' => 'entity_id']);
+        return $this->hasOne(EavEntity::class, ['id' => 'entity_id']);
     }
 
     /**

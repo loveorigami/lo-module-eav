@@ -9,7 +9,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="value-index">
-    <?=TabMenu::widget()?>
+    <?= $this->render('/_menu'); ?>
     <?= $this->render('_filter', ['model' => $searchModel]); ?>
 
     <?php

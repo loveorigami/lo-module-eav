@@ -2,6 +2,7 @@
 
 namespace lo\modules\eav\models;
 
+use lo\modules\eav\models\meta\EavEntityModelMeta;
 use Yii;
 
 /**

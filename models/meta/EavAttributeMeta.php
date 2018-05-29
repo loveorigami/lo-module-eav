@@ -1,15 +1,20 @@
 <?php
-namespace lo\modules\eav\models;
 
+namespace lo\modules\eav\models\meta;
+
+use lo\modules\eav\models\EavAttributeType;
 use Yii;
 use lo\core\db\MetaFields;
 use yii\helpers\ArrayHelper;
 use lo\core\helpers\FA;
+use lo\core\db\fields;
 
 
 /**
  * Class EavAttributeMeta
  * Мета описание модели
+ *
+ * @property array $types
  */
 class EavAttributeMeta extends MetaFields
 {
@@ -20,10 +25,13 @@ class EavAttributeMeta extends MetaFields
      */
     public function getTypes()
     {
-        $models = EavAttributeType::find()->published()->orderBy(["name" => SORT_ASC])->all();
+        $models = EavAttributeType::find()->orderBy(["name" => SORT_ASC])->all();
         return ArrayHelper::map($models, "id", "name");
     }
 
+    /**
+     * @return array
+     */
     public static function getIconsList()
     {
         return FA::getIconsList();
@@ -37,7 +45,7 @@ class EavAttributeMeta extends MetaFields
         return [
             "name" => [
                 "definition" => [
-                    "class" => \lo\core\db\fields\TextField::class,
+                    "class" => fields\TextField::class,
                     "title" => Yii::t('backend', 'Field'),
                     "showInGrid" => true,
                     "showInFilter" => true,
@@ -49,7 +57,7 @@ class EavAttributeMeta extends MetaFields
 
             "label" => [
                 "definition" => [
-                    "class" => \lo\core\db\fields\TextField::class,
+                    "class" => fields\TextField::class,
                     "title" => Yii::t('backend', 'Label'),
                     "showInGrid" => true,
                     "showInFilter" => true,
@@ -61,9 +69,9 @@ class EavAttributeMeta extends MetaFields
 
             "icon" => [
                 "definition" => [
-                    "class" => \lo\core\db\fields\ListField::class,
+                    "class" => fields\ListField::class,
                     "inputClassOptions" => [
-                        "options"=>[
+                        "options" => [
                             'class' => 'clearfix non-styler form-control fa-font-family',
                             'encode' => false,
                         ],
@@ -80,18 +88,19 @@ class EavAttributeMeta extends MetaFields
 
             "type_id" => [
                 "definition" => [
-                    "class" => \lo\core\db\fields\HasOneField::class,
+                    "class" => fields\HasOneField::class,
+                    'relationName' => 'eavType',
                     "title" => Yii::t('backend', 'Type'),
-                    "data" => [$this, "getTypes"], // массив всех типов (см. выше)
+                    "data" => [$this, "getTypes"],
                     "editInGrid" => true,
                 ],
-                "params" => [$this->owner, "type_id", "eavType"] // id и relation getEavType
+                "params" => [$this->owner, "type_id"]
             ],
 
             "required" => [
                 "definition" => [
-                    "class" => \lo\core\db\fields\CheckBoxField::class,
-                    "title" => Yii::t('common', 'Required'),
+                    "class" => fields\CheckBoxField::class,
+                    "title" => Yii::t('backend', 'Required'),
                     "showInGrid" => true,
                     "editInGrid" => true,
                     "showInFilter" => true,
@@ -101,7 +110,7 @@ class EavAttributeMeta extends MetaFields
 
             "default_value" => [
                 "definition" => [
-                    "class" => \lo\core\db\fields\TextField::class,
+                    "class" => fields\TextField::class,
                     "title" => Yii::t('backend', 'defaultValue'),
                     "showInGrid" => true,
                     "showInFilter" => false,

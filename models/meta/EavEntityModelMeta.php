@@ -1,5 +1,5 @@
 <?php
-namespace lo\modules\eav\models;
+namespace lo\modules\eav\models\meta;
 
 use Yii;
 use lo\core\db\MetaFields;

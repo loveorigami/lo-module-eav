@@ -1,6 +1,7 @@
 <?php
-namespace lo\modules\eav\models;
+namespace lo\modules\eav\models\meta;
 
+use lo\modules\eav\models\EavAttributeType;
 use Yii;
 use lo\core\db\MetaFields;
 

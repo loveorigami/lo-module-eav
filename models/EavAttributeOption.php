@@ -2,6 +2,7 @@
 
 namespace lo\modules\eav\models;
 
+use lo\modules\eav\models\meta\EavAttributeOptionMeta;
 use Yii;
 
 /**
@@ -18,7 +19,7 @@ use Yii;
  */
 class EavAttributeOption extends \lo\core\db\ActiveRecord
 {
-    public $tplDir = '@lo/modules/eav/modules/admin/views/attribute-option/tpl/';
+
     /**
      * @inheritdoc
      */
@@ -47,7 +48,7 @@ class EavAttributeOption extends \lo\core\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getAttribute($name = '')
+    public function getEavAttribute()
     {
         return $this->hasOne(EavAttribute::class, ['id' => 'attribute_id']);
     }
